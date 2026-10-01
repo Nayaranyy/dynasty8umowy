@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dynasty 8 – Generator umów</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--card:#0e0e0e;--line:#262626;--tx:#fff;--mut:#a3a3a3;--g:#22c55e;--g2:#4ade80;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0}
+header{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--line)}
+header img{height:52px;width:52px}header h1{font-size:24px}header small{color:var(--g);letter-spacing:.14em;text-transform:uppercase;display:block;font:600 11px Inter}
+.wrap{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:24px;padding:22px;max-width:1300px;margin:0 auto}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}}
+form{background:var(--card);border:1px solid var(--line);padding:18px}
+fieldset{border:0;border-top:1px solid var(--line);margin:14px 0 0;padding:12px 0 0}
+legend{color:var(--g);font:600 12px Inter;letter-spacing:.12em;text-transform:uppercase;padding-right:8px}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.r .f{grid-column:1/-1}
+label{display:block;font-size:11px;color:var(--mut);margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em}
+input,select{width:100%;background:#000;border:1px solid var(--line);color:var(--tx);padding:9px 10px;font:inherit}
+input:focus,select:focus{outline:0;border-color:var(--g)}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.types button{background:#000;border:1px solid var(--line);color:var(--tx);padding:10px 4px;font:600 12px Inter;cursor:pointer}
+.types button.on{background:var(--g);color:#03140a;border-color:var(--g)}
+.btn{background:var(--g);color:#03140a;border:0;padding:11px 20px;font:600 13px Inter;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.btn.o{background:none;color:var(--g);border:1px solid var(--g)}
+.act{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.hide{display:none}
+.note{font-size:12px;color:var(--mut);margin-top:12px}
+.wrap>div{min-width:0}.sheetwrap{overflow:hidden}#pages{width:794px;transform-origin:top left}.ov{position:fixed;inset:0;background:#000c;display:grid;place-items:center;z-index:30;padding:16px}.dlg{background:var(--card);border:1px solid var(--line);padding:22px;max-width:560px;width:100%;max-height:85vh;overflow:auto;position:relative}.dlg .x{position:absolute;top:8px;right:12px;background:none;border:0;color:var(--tx);font-size:24px;cursor:pointer}.hr{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.hr small{color:var(--mut)}.btn.s{padding:6px 12px;font-size:11px}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f2a1a;border:1px solid var(--g);padding:10px 18px;z-index:40;display:none;max-width:90%}.act select{width:auto;min-width:150px}.page{user-select:none;-webkit-user-select:none;position:relative;width:794px;height:1123px;background:#fff;color:#111;padding:52px 56px 64px;margin-bottom:20px;font:13.5px/1.55 Inter,Arial,sans-serif;box-shadow:0 0 0 1px #333;overflow:hidden}.pb{height:100%;overflow:hidden}.pn{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:11px;color:#777}
+.page h2{text-align:center;font-size:20px;margin-bottom:4px;color:#111}.page .c{text-align:center;margin:0 0 18px}
+.page h3{font:700 15px Inter,Arial,sans-serif;text-align:left;margin:18px 0 6px;color:#15803d;border-bottom:1px solid #86efac;padding-bottom:3px}.page table.info{margin:8px 0 6px;font-size:13px}.page table.info th,.page table.info td{text-align:left}.page table.info th{width:36%;background:#f0fdf4}.page p{margin:0 0 8px;text-align:justify}
+.page u{text-decoration:none;border-bottom:1px dotted #555;min-width:60px;display:inline-block}
+.page table{border-collapse:collapse;width:100%;font-size:12px}.page td,.page th{border:1px solid #999;padding:3px 6px;text-align:right}.page th{background:#eee}
+.sig{display:flex;justify-content:space-between;gap:30px;margin-top:48px;text-align:center}.sig div{flex:1}.sig .sg{display:block;font:normal 40px/1.1 'Mrs Saint Delafield','Segoe Script','Brush Script MT',cursive;color:#1b2a6b;border-bottom:1px solid #111;min-height:46px;padding:0 4px}.sig span{display:block;font-size:12px;padding-top:4px}
+@page{size:A4;margin:0}@media print{body{background:#fff}header,form,.act,.note{display:none}.wrap{display:block;padding:0}.sheetwrap{height:auto!important;overflow:visible}#pages{transform:none!important;width:auto}.page{box-shadow:none;margin:0;break-after:page}}
+</style></head><body>
+<header><img src="data:image/png;base64,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" alt="Dynasty 8"><div><small>Dynasty 8 · Los Santos</small><h1>Generator umów</h1></div></header>
+<div class="wrap">
+<form id="f" autocomplete="off">
+<label>Rodzaj umowy</label>
+<div class="types" id="types"><button type="button" data-t="sale" class="on">Sprzedaż</button><button type="button" data-t="rent">Najem</button><button type="button" data-t="inst">Sprzedaż na raty</button></div>
+<fieldset><legend>Data</legend><div class="r"><div><label>Data zawarcia</label><input id="da" type="date"></div></div></fieldset>
+<fieldset><legend id="la">Sprzedający</legend><div class="r"><div class="f"><label>Imię i nazwisko / firma</label><input id="an"></div><div><label>SSN</label><input id="ai"></div></div></fieldset>
+<fieldset><legend id="lb">Nabywca</legend><div class="r"><div class="f"><label>Imię i nazwisko / firma</label><input id="bn"></div><div><label>SSN</label><input id="bi"></div></div></fieldset>
+<fieldset><legend>Nieruchomość</legend><div class="r"><div class="f"><label>Adres nieruchomości</label><input id="pa"></div></div></fieldset>
+<fieldset><legend>Finanse</legend><div class="r"><div><label>Forma płatności</label><select id="fp"><option>Gotówka</option><option>Przelew bankowy</option><option>Karta</option></select></div>
+<div data-for="sale inst"><label>Cena nieruchomości</label><input id="pc" type="number" min="0"></div>
+<div data-for="rent"><label>Czynsz miesięczny</label><input id="rt" type="number" min="0"></div>
+<div data-for="rent"><label>Kaucja</label><input id="dp" type="number" min="0"></div>
+<div data-for="rent"><label>Okres najmu (mies.)</label><input id="tm" type="number" min="1" value="12"></div>
+<div data-for="inst"><label>Wpłata własna</label><input id="dw" type="number" min="0"></div>
+<div data-for="inst"><label>Liczba rat</label><input id="ic" type="number" min="1" max="480" value="24"></div>
+<div data-for="inst"><label>Oprocentowanie roczne (%)</label><input id="ir" type="number" min="0" step="0.1" value="0"></div>
+<div data-for="rent"><label>Płatność do dnia miesiąca</label><input id="pd" type="number" min="1" max="28" value="10"></div></div></fieldset>
+<p class="note">Umowy na potrzeby serwera GTA 5 Roleplay (Los Santos). Wszystkie kwoty są w dolarach ($).</p>
+</form>
+<div><div class="act"><button class="btn" id="pdf">Pobierz PDF</button><select id="pngsel" aria-label="Zakres PNG"></select><button class="btn o" id="png">Pobierz PNG</button><span id="dbx" style="display:contents"></span></div><div id="toast"></div><div class="sheetwrap" id="sw"><div id="pages"></div></div></div>
+</div>
+<script src="config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+var $=function(i){return document.getElementById(i)},T='sale';
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function v(i){var x=$(i).value.trim();return x?'<b>'+esc(x)+'</b>':'<u>&nbsp;</u>'}
+function n(i){return Number($(i).value)||0}
+function m(x){return '$'+x.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function fd(d){return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear()}
+function dt(){var x=$('da').value;return x?'<b>'+fd(new Date(x+'T12:00:00'))+'</b>':'<u>&nbsp;</u>'}
+function sched(P,N,i,pmt){
+  var base=$('da').value?new Date($('da').value+'T12:00:00'):new Date(),rest=P,h='<table><tr><th>Nr</th><th>Termin</th><th>Rata</th><th>Pozostało</th></tr>';
+  for(var k=1;k<=N;k++){rest=Math.max(0,rest-(pmt-rest*i));var d=new Date(base.getTime()+k*6048e5);
+    h+='<tr><td>'+k+'</td><td>'+fd(d)+'</td><td>'+m(pmt)+'</td><td>'+m(k===N?0:rest)+'</td></tr>'}
+  return h+'</table>'}
+var Z='<u>&nbsp;</u>';
+function tbl(r){return '<table class="info">'+r.map(function(x){return '<tr><th>'+x[0]+'</th><td>'+x[1]+'</td></tr>'}).join('')+'</table>'}
+function party(a,b){return v(a)+', SSN: '+v(b)}
+function pm(){return '<b>'+esc($('fp').value)+'</b>'}
+function H(k,t){return '<h3>§ '+k+'. '+t+'</h3>'}
+function mm(x){return x?'<b>'+m(x)+'</b>':Z}
+function end(k){return H(k,'Postanowienia końcowe')+'<p>W sprawach nieuregulowanych niniejszą umową zastosowanie mają przepisy obowiązujące w stanie San Andreas oraz inne obowiązujące przepisy prawa. Wszystkie kwoty wyrażone są w dolarach amerykańskich (USD). Umowa została sporządzona w dwóch jednobrzmiących egzemplarzach, po jednym dla każdej ze stron.</p>'}
+function sig(a,b){return '<div class="sig"><div><i class="sg">'+esc($('an').value.trim())+'</i><span>'+a+'</span></div><div><i class="sg">'+esc($('bn').value.trim())+'</i><span>'+b+'</span></div></div>'}
+function build(){
+  var h,pc=n('pc'),pd=n('pd')||10,A=party('an','ai'),B=party('bn','bi'),
+  intro='<p>Umowa zawarta w dniu '+dt()+' pomiędzy stronami wskazanymi w poniższej tabeli:</p>',
+  ow='<p style="margin-left:12px">1. Sprzedający oświadcza, że nieruchomość jest wolna od wad prawnych i roszczeń osób trzecich.</p><p style="margin-left:12px">2. Nabywca oświadcza, że zapoznał się ze stanem nieruchomości i nie wnosi zastrzeżeń.</p><p style="margin-left:12px">3. Strony zobowiązują się do niezwłocznego dostarczenia wszystkich niezbędnych dokumentów do przeniesienia własności.</p>',
+  pw='Własność nieruchomości zostanie przeniesiona na Nabywcę po uiszczeniu pełnej ceny sprzedaży oraz dopełnieniu wszelkich formalności wymaganych przez prawo, w tym podpisaniu aktu notarialnego.';
+  if(T==='sale'){
+    h='<h2>UMOWA SPRZEDAŻY NIERUCHOMOŚCI</h2>'+intro+tbl([['Sprzedający',A],['Nabywca',B],['Adres nieruchomości',v('pa')],['Cena sprzedaży',mm(pc)],['Forma płatności',pm()]])+
+    H(1,'Przedmiot umowy')+'<p>Sprzedający oświadcza, że jest właścicielem nieruchomości, o której mowa w powyższej tabeli, i zobowiązuje się sprzedać ją Nabywcy, a Nabywca oświadcza, że zamierza nabyć tę nieruchomość na warunkach określonych w niniejszej umowie.</p>'+
+    H(2,'Oświadczenia stron')+ow+
+    H(3,'Cena i sposób zapłaty')+'<p>Nabywca zobowiązuje się zapłacić Sprzedającemu cenę sprzedaży w wysokości określonej w powyższej tabeli. Płatność nastąpi w formie wskazanej w tabeli, w terminie ustalonym przez strony.</p>'+
+    H(4,'Przeniesienie własności')+'<p>'+pw+'</p>'+end(5)+sig('Sprzedający','Nabywca');
+  }else if(T==='rent'){
+    h='<h2>UMOWA NAJMU NIERUCHOMOŚCI</h2>'+intro+tbl([['Wynajmujący',A],['Najemca',B],['Adres nieruchomości',v('pa')],['Czynsz miesięczny',mm(n('rt'))],['Kaucja',mm(n('dp'))],['Okres najmu','<b>'+(n('tm')||'…')+' mies.</b>'],['Termin płatności czynszu','do <b>'+pd+'.</b> dnia miesiąca'],['Forma płatności',pm()]])+
+    H(1,'Przedmiot i czas najmu')+'<p>Wynajmujący oświadcza, że jest uprawniony do dysponowania nieruchomością, o której mowa w powyższej tabeli, i oddaje ją Najemcy do używania na okres wskazany w tabeli, licząc od dnia zawarcia umowy.</p>'+
+    H(2,'Czynsz i sposób zapłaty')+'<p>Najemca zobowiązuje się płacić Wynajmującemu czynsz w wysokości i terminie określonych w powyższej tabeli, w formie w niej wskazanej.</p>'+
+    H(3,'Kaucja')+'<p>Najemca wpłaca kaucję w dniu zawarcia umowy. Kaucja zostanie zwrócona w ciągu 14 dni od zwrotu nieruchomości, pomniejszona o ewentualne zaległości i szkody.</p>'+
+    H(4,'Obowiązki Najemcy')+'<p>Najemca używa nieruchomości zgodnie z jej przeznaczeniem, nie podnajmuje jej bez zgody Wynajmującego i odpowiada za szkody wykraczające poza normalne zużycie.</p>'+
+    H(5,'Wypowiedzenie')+'<p>Każda ze stron może wypowiedzieć umowę z zachowaniem jednomiesięcznego okresu wypowiedzenia. Wynajmujący może wypowiedzieć umowę bez zachowania terminu, gdy Najemca zalega z czynszem za co najmniej dwa miesiące.</p>'+end(6)+sig('Wynajmujący','Najemca');
+  }else{
+    var dw=Math.min(n('dw'),pc),P=Math.max(0,pc-dw),N=Math.max(1,Math.round(n('ic'))||1),r=n('ir'),i=r/5200,pmt=!P?0:(i?P*i/(1-Math.pow(1+i,-N)):P/N);
+    h='<h2>UMOWA SPRZEDAŻY NIERUCHOMOŚCI NA RATY</h2>'+intro+tbl([['Sprzedający',A],['Nabywca',B],['Adres nieruchomości',v('pa')],['Cena sprzedaży',mm(pc)],['Wpłata własna','<b>'+m(dw)+'</b>'],['Kwota do spłaty w ratach','<b>'+m(P)+'</b>'],['Liczba rat','<b>'+N+'</b>'],['Wysokość raty (tygodniowej)','<b>'+m(pmt)+'</b>'],['Termin płatności rat','co <b>7 dni</b>, pierwsza rata: <b>'+fd(new Date((($('da').value?new Date($('da').value+'T12:00:00'):new Date())).getTime()+6048e5))+'</b>'],['Oprocentowanie','<b>'+(r?r+'% rocznie':'bez odsetek')+'</b>'],['Łączna kwota do zapłaty','<b>'+m(dw+pmt*N)+'</b>'],['Forma płatności',pm()]])+
+    H(1,'Przedmiot umowy')+'<p>Sprzedający oświadcza, że jest właścicielem nieruchomości, o której mowa w powyższej tabeli, i zobowiązuje się sprzedać ją Nabywcy, a Nabywca oświadcza, że zamierza nabyć tę nieruchomość na warunkach określonych w niniejszej umowie, z płatnością ceny w ratach.</p>'+
+    H(2,'Oświadczenia stron')+ow+
+    H(3,'Cena i sposób zapłaty')+'<p>Nabywca zobowiązuje się zapłacić Sprzedającemu cenę sprzedaży w wysokości określonej w powyższej tabeli: wpłatę własną w dniu zawarcia umowy, a pozostałą kwotę w ratach tygodniowych, płatnych co 7 dni, w terminie i formie wskazanych w tabeli. Harmonogram spłat stanowi załącznik do umowy.</p>'+
+    H(4,'Przeniesienie własności')+'<p>'+pw.replace('uiszczeniu pełnej ceny sprzedaży','uiszczeniu wszystkich rat i pełnej ceny sprzedaży')+' Nabywca otrzymuje nieruchomość do używania w dniu zawarcia umowy, a do czasu przeniesienia własności Sprzedający zastrzega sobie własność nieruchomości.</p>'+
+    H(5,'Opóźnienie w płatności')+'<p>Za opóźnienie w zapłacie raty Sprzedający może naliczać odsetki ustawowe za opóźnienie. Opóźnienie w zapłacie co najmniej dwóch kolejnych rat uprawnia Sprzedającego do odstąpienia od umowy po wezwaniu do zapłaty z wyznaczeniem dodatkowego terminu.</p>'+
+    end(6)+H(7,'Załącznik – harmonogram spłat')+(P?sched(P,N,i,pmt):'<p>Brak rat do spłaty.</p>')+sig('Sprzedający','Nabywca');
+  }
+  paginate(h);
+}
+function setT(t){T=t;document.querySelectorAll('#types button').forEach(function(b){b.classList.toggle('on',b.dataset.t===t)});
+  document.querySelectorAll('[data-for]').forEach(function(e){e.classList.toggle('hide',e.dataset.for.split(' ').indexOf(t)<0)});
+  var rent=t==='rent';$('la').textContent=rent?'Wynajmujący':'Sprzedający';$('lb').textContent=rent?'Najemca':'Nabywca';build()}
+$('types').onclick=function(e){if(e.target.dataset.t)setT(e.target.dataset.t)};
+$('f').addEventListener('input',build);
+
+function fit(){var s=Math.min(1,$('sw').clientWidth/794);$('pages').style.transform='scale('+s+')';$('sw').style.height=Math.ceil($('pages').offsetHeight*s)+'px'}
+function paginate(h){
+  var t=document.createElement('div');t.innerHTML=h;var bl=[];
+  [].slice.call(t.children).forEach(function(e){
+    if(e.tagName==='TABLE'&&!e.classList.contains('info')){var rs=[].slice.call(e.rows),hd=rs.shift();
+      for(var q=0;q<rs.length;q+=16){var tb=document.createElement('table');tb.innerHTML=hd.outerHTML+rs.slice(q,q+16).map(function(r){return r.outerHTML}).join('');bl.push([tb])}}
+    else bl.push([e])});
+  for(var i=0;i<bl.length-1;i++)if(bl[i][0].tagName==='H3'){bl[i]=bl[i].concat(bl[i+1]);bl.splice(i+1,1)}
+  var L=bl.length;if(L>1&&bl[L-1][0].classList.contains('sig')){var sg=bl.pop();bl[bl.length-1]=bl[bl.length-1].concat(sg)}
+  var P=$('pages'),body;P.innerHTML='';
+  function np(){var pg=document.createElement('div');pg.className='page';body=document.createElement('div');body.className='pb';pg.appendChild(body);P.appendChild(pg)}
+  function add(b){b.forEach(function(x){body.appendChild(x)})}
+  np();
+  bl.forEach(function(b){add(b);
+    if(body.scrollHeight>body.clientHeight+1&&body.children.length>b.length){b.forEach(function(x){body.removeChild(x)});np();add(b)}});
+  var ps=P.querySelectorAll('.page');
+  ps.forEach(function(p,i){var f=document.createElement('div');f.className='pn';f.textContent='Dynasty 8 · Strona '+(i+1)+' / '+ps.length;p.appendChild(f)});
+  var sel=$('pngsel'),cur=sel.value,o='<option value="all">'+(ps.length>1?'Wszystkie strony (1 obraz)':'Strona 1')+'</option>';
+  if(ps.length>1)for(var z=0;z<ps.length;z++)o+='<option value="'+z+'">Strona '+(z+1)+'</option>';
+  sel.innerHTML=o;if(cur&&sel.querySelector('option[value="'+cur+'"]'))sel.value=cur;
+  fit();
+}
+window.addEventListener('resize',fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){build()});
+
+async function flat(fn){var pg=$('pages'),old=pg.style.transform;pg.style.transform='none';
+  try{if(document.fonts&&document.fonts.ready)await document.fonts.ready;return await fn(pg.querySelectorAll('.page'))}finally{pg.style.transform=old;fit()}}
+function shot(el){return html2canvas(el,{scale:2,backgroundColor:'#ffffff',useCORS:true})}
+async function saveFile(name,data){
+  var dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
+  if(dl)return dl.save({filename:name,data:data});
+  var u=URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000)}
+function failX(e){if(!(e&&e.code==='declined'))alert('Nie udało się utworzyć pliku. Spróbuj ponownie.')}
+$('pdf').onclick=async function(){
+  var b=$('pdf');b.disabled=true;b.textContent='Tworzenie PDF…';
+  try{
+    var blob=await flat(async function(ps){
+      var pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+      for(var i=0;i<ps.length;i++){var c=await shot(ps[i]);if(i)pdf.addPage();pdf.addImage(c.toDataURL('image/jpeg',.92),'JPEG',0,0,210,297)}
+      return pdf.output('blob')});
+    await saveFile('umowa-dynasty8.pdf',blob);
+  }catch(e){failX(e)}finally{b.disabled=false;b.textContent='Pobierz PDF'}
+};
+$('png').onclick=async function(){
+  var b=$('png'),v=$('pngsel').value;b.disabled=true;b.textContent='Tworzenie PNG…';
+  try{
+    var blob=await flat(async function(ps){
+      var ix=[],cs=[],i;if(v==='all'){for(i=0;i<ps.length;i++)ix.push(i)}else ix=[Number(v)];
+      for(i=0;i<ix.length;i++)cs.push(await shot(ps[ix[i]]));
+      var gap=cs.length>1?32:0,W=cs[0].width,H=cs.reduce(function(a,c){return a+c.height},0)+gap*(cs.length-1),o=document.createElement('canvas');
+      o.width=W;o.height=H;var x=o.getContext('2d');x.fillStyle='#e5e5e5';x.fillRect(0,0,W,H);var y=0;
+      cs.forEach(function(c){x.drawImage(c,0,y);y+=c.height+gap});
+      return await new Promise(function(r){o.toBlob(r,'image/png')})});
+    await saveFile(v==='all'?'umowa-dynasty8.png':'umowa-dynasty8-strona-'+(Number(v)+1)+'.png',blob);
+  }catch(e){failX(e)}finally{b.disabled=false;b.textContent='Pobierz PNG'}
+};
+
+/* ---------- baza Supabase (zapis umów, tylko po zalogowaniu admina) ---------- */
+var CFG=window.D8_CONFIG||{},SB_URL=String(CFG.SUPABASE_URL||'').trim().replace(/\/+$/,''),SB_KEY=String(CFG.SUPABASE_ANON_KEY||'').trim(),REMOTE=!!(SB_URL&&SB_KEY),
+  JW='d8:umowy-jwt',TOK=null,CUR=null,FIELDS=['da','an','ai','bn','bi','pa','fp','pc','rt','dp','tm','dw','ic','ir','pd'],NAMES={sale:'Sprzedaż',rent:'Najem',inst:'Sprzedaż na raty'};
+try{TOK=sessionStorage.getItem(JW)}catch(e){}
+function say(t){var x=$('toast');x.textContent=t;x.style.display='block';clearTimeout(say.t);say.t=setTimeout(function(){x.style.display='none'},4000)}
+function fe(e){say('Błąd: '+(e&&e.message||e))}
+function api(m,p,b,pf){
+  var hd={apikey:SB_KEY,Authorization:'Bearer '+(TOK||SB_KEY),'Content-Type':'application/json'};if(pf)hd.Prefer=pf;
+  return fetch(SB_URL+'/rest/v1/'+p,{method:m,headers:hd,body:b?JSON.stringify(b):undefined}).then(function(r){
+    if(r.status===401&&TOK)dbOut(true);
+    if(!r.ok)return r.text().then(function(t){throw new Error(r.status+' '+t)});
+    return r.status===204?null:r.text().then(function(t){return t?JSON.parse(t):null});
+  });
+}
+function dbOut(q){TOK=null;CUR=null;try{sessionStorage.removeItem(JW)}catch(e){}dbui();if(q)say('Sesja wygasła – zaloguj się ponownie.')}
+function collect(){var d={};FIELDS.forEach(function(k){d[k]=$(k).value});return d}
+function dbui(){
+  var b=$('dbx');if(!REMOTE){b.innerHTML='';return}
+  b.innerHTML=TOK?'<button class="btn o" id="sv">Zapisz w bazie</button><button class="btn o" id="hs">Historia</button><button class="btn o" id="nw">Nowa</button><button class="btn o" id="lo">Wyloguj</button>':'<button class="btn o" id="li">Zaloguj (zapis w bazie)</button>';
+  if(TOK){$('sv').onclick=dbSave;$('hs').onclick=dbHist;$('lo').onclick=function(){dbOut()};
+    $('nw').onclick=function(){CUR=null;FIELDS.forEach(function(k){if(k!=='da')$(k).value=''});$('ic').value=24;$('tm').value=12;$('pd').value=10;$('ir').value=0;$('fp').selectedIndex=0;build();say('Nowa umowa.')}}
+  else $('li').onclick=dbLogin;
+}
+function dbSave(){
+  var d=collect(),o={type:T,title:(d.an||'—')+' → '+(d.bn||'—'),data:d},b=$('sv');b.disabled=true;
+  (CUR?api('PATCH','contracts?id=eq.'+encodeURIComponent(CUR),o,'return=minimal'):api('POST','contracts',o,'return=representation').then(function(r){CUR=r&&r[0]&&r[0].id}))
+  .then(function(){say('Zapisano w bazie ✓')}).catch(fe).then(function(){b.disabled=false});
+}
+function dbLoad(r){CUR=r.id;var d=r.data||{};FIELDS.forEach(function(k){if(d[k]!=null)$(k).value=d[k]});setT(r.type)}
+function dbHist(){
+  api('GET','contracts?select=id,type,title,created_at&order=created_at.desc&limit=100').then(function(rs){
+    var o=document.createElement('div');o.className='ov';
+    o.innerHTML='<div class="dlg"><button class="x">×</button><h2>Historia umów</h2>'+(rs.length?rs.map(function(r){return '<div class="hr" data-id="'+esc(String(r.id))+'"><span><b>'+esc(r.title||'')+'</b><br><small>'+esc(NAMES[r.type]||r.type)+' · '+new Date(r.created_at).toLocaleString('pl-PL')+'</small></span><span><button class="btn o s" data-l>Wczytaj</button> <button class="btn o s" data-d>Usuń</button></span></div>'}).join(''):'<p>Brak zapisanych umów.</p>')+'</div>';
+    o.onclick=function(e){var t=e.target,row=t.closest&&t.closest('.hr');
+      if(t===o||t.className==='x')return o.remove();
+      if(!row)return;var id=row.dataset.id;
+      if(t.hasAttribute('data-l'))api('GET','contracts?select=*&id=eq.'+encodeURIComponent(id)).then(function(r){if(r&&r[0]){dbLoad(r[0]);o.remove()}}).catch(fe);
+      if(t.hasAttribute('data-d')&&confirm('Usunąć tę umowę z bazy?'))api('DELETE','contracts?id=eq.'+encodeURIComponent(id),null,'return=minimal').then(function(){row.remove();if(String(CUR)===id)CUR=null}).catch(fe)};
+    document.body.appendChild(o);
+  }).catch(fe);
+}
+function dbLogin(){
+  var o=document.createElement('div');o.className='ov';
+  o.innerHTML='<div class="dlg"><button class="x">×</button><h2>Logowanie</h2><label>E-mail</label><input id="lm" type="email" autocomplete="username"><br><br><label>Hasło</label><input id="lp" type="password" autocomplete="current-password"><div style="margin-top:16px"><button class="btn" id="lg">Zaloguj</button></div></div>';
+  document.body.appendChild(o);o.onclick=function(e){if(e.target===o||e.target.className==='x')o.remove()};
+  function go(){fetch(SB_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({email:$('lm').value.trim(),password:$('lp').value})})
+    .then(function(r){return r.json()}).then(function(j){if(!j.access_token)return say('Nieprawidłowy e-mail lub hasło.');TOK=j.access_token;try{sessionStorage.setItem(JW,TOK)}catch(e){}o.remove();dbui();say('Zalogowano.')}).catch(fe)}
+  $('lg').onclick=go;$('lp').onkeydown=function(e){if(e.key==='Enter')go()};
+}
+$('da').value=new Date().toISOString().slice(0,10);setT('sale');dbui();
+</script></body></html>
